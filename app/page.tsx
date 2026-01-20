@@ -1,7 +1,10 @@
 "use client";
 
+export const dynamic = "force-static";
+
 import { motion } from "framer-motion";
 import { MessageCircle, MapPin, Clock, Star } from "lucide-react";
+import Image from "next/image";
 
 export default function Home() {
   const menuItems = [
@@ -45,10 +48,13 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1551504734-5ee63e9f9774?q=80&w=1920&auto=format&fit=crop"
-            alt="Taquería Background"
-            className="w-full h-full object-cover opacity-90"
+            alt="Tacos en Austin"
+            fill
+            priority={true}
+            className="object-cover opacity-60"
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-black/70 mix-blend-multiply" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-90" />
@@ -118,12 +124,15 @@ export default function Home() {
             className="flex flex-col md:flex-row items-center gap-12"
           >
             <div className="w-full md:w-1/2 relative rounded-2xl overflow-hidden shadow-2xl skew-x-0 md:-skew-x-2 border-4 border-[#FCA311]/20">
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=800&q=80"
                 alt="Paquete Familiar"
+                width={800}
+                height={600}
                 className="w-full h-auto object-cover transform md:skew-x-2 scale-105 hover:scale-110 transition-transform duration-700"
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 md:skew-x-2">
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 md:skew-x-2 pointer-events-none">
                 <span className="text-[#FCA311] font-bold text-lg tracking-wider">
                   RECOMENDADO
                 </span>
@@ -185,10 +194,13 @@ export default function Home() {
               >
                 <div className="h-72 overflow-hidden relative w-full">
                   <div className="absolute inset-0 bg-gradient-to-t from-[#050505] to-transparent z-10 opacity-60" />
-                  <img
+                  <Image
                     src={item.img}
                     alt={item.title}
+                    width={800}
+                    height={600}
                     className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-out"
+                    sizes="(max-width: 768px) 100vw, 33vw"
                   />
                 </div>
 
