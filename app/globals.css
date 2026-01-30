@@ -5,10 +5,43 @@
 :root {
   --background: #050505;
   --foreground: #ededed;
+  --color-primary: #e63946;
+  --color-secondary: #ffb703;
 }
 
 body {
   color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--background);
+  /* Dark Mode Premium: Subtle red-tinted depth gradient from top */
+  background-image: radial-gradient(
+    circle at 50% 0%,
+    rgba(230, 57, 70, 0.08) 0%,
+    #050505 70%
+  );
+  background-attachment: fixed;
+  font-family: "Inter", sans-serif;
+  line-height: 1.5; /* Critical legibility factor */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer base {
+  /* Enforce border-radius: 12px on all interactive containers */
+  button,
+  .card {
+    @apply rounded-[12px];
+  }
+}
+
+@layer utilities {
+  /* Z-axis +8px Elevation with Red Shadow */
+  .hover-premium {
+    @apply transition-all duration-300 ease-out;
+  }
+  .hover-premium:hover {
+    transform: translateY(-8px);
+    box-shadow:
+      0 12px 30px -5px rgba(230, 57, 70, 0.15),
+      0 8px 10px -6px rgba(0, 0, 0, 0.5);
+  }
 }

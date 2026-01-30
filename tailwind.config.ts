@@ -9,23 +9,22 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "#050505",
-        foreground: "#ededed",
+        base: "#050505", // Obsidian Matte
+        primary: "#E63946", // Brand Red
+        secondary: "#FFB703", // Brand Gold/Yellow
         michoacan: {
+          // Keeping legacy compatibility just in case, but mapping to new values
           red: "#E63946",
-          gold: "#FCA311",
-          black: "#0a0a0a",
+          gold: "#FFB703",
+          black: "#050505",
         },
       },
-      // Preserving custom fonts from previous visual overhaul since user didn't explicitly ask to remove them,
-      // but the requested config doesn't include them.
-      // User instruction: "Reemplaza TODO el contenido... con esto".
-      // STRICTLY FOLLOWING USER INSTRUCTION to replace with provided content.
-      // However, if I remove font definitions, the 'font-serif' and 'font-sans' classes used in page.tsx might break or fall back to defaults.
-      // The user provided config does NOT have fontFamily.
-      // The user provided globals.css sets font-family: Arial, Helvetica, sans-serif.
-      // I will follow the user's provided code EXACTLY as requested to solve the "Dependency Hell".
-      // Aesthetics might degrade but functionality is the priority here.
+      borderRadius: {
+        DEFAULT: "12px",
+      },
+      fontFamily: {
+        sans: ["Inter", "sans-serif"],
+      },
     },
   },
   plugins: [],
