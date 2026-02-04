@@ -15,6 +15,10 @@
   - [x] **Social Media Integration** (Links & Visibility Check)
   - [x] **Critical Visibility Fix** (Forced white text on contact info)
   - [x] **Landing Page Structure** (Minimalist Menu + Lifestyle Sections)
+  - [x] **Asset Synchronization** (Local files mapped correctly)
+  - [x] **List Layout Implementation** (Text-based menu)
+  - [x] **Favorites Section (Trilogy)** (Burrito, Torta, Quesabirria featured)
+  - [x] **Mobile Experience Optimization** (Responsive Polish & Touch Targets)
 
 ## Phase 2: Interactivity & Logic
 

@@ -57,11 +57,11 @@ export default function Home() {
               transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
               className="flex flex-col items-center"
             >
-              <h2 className="text-[#FCA311] font-serif text-lg md:text-2xl tracking-[0.3em] mb-8 uppercase font-bold drop-shadow-sm">
+              <h2 className="text-[#FCA311] font-serif text-base md:text-2xl tracking-[0.3em] mb-8 uppercase font-bold drop-shadow-sm">
                 Austin, Texas
               </h2>
 
-              <div className="relative w-full max-w-[600px] aspect-[3/1] mb-6">
+              <div className="relative w-full max-w-[400px] md:max-w-[600px] aspect-[3/1] mb-6">
                 <Image
                   src={ASSETS.LOGO}
                   alt="Taquería y Carnitas Michoacán"
@@ -72,23 +72,23 @@ export default function Home() {
                 />
               </div>
 
-              <div className="h-1 w-32 bg-[#E63946] mx-auto my-8 rounded-full shadow-[0_0_15px_#E63946]" />
+              <div className="h-1 w-24 md:w-32 bg-[#E63946] mx-auto my-8 rounded-full shadow-[0_0_15px_#E63946]" />
 
-              <p className="text-xl md:text-2xl text-gray-200 font-light tracking-wide mb-12 max-w-2xl mx-auto leading-relaxed">
+              <p className="text-lg md:text-2xl text-gray-200 font-light tracking-wide mb-12 max-w-2xl mx-auto leading-relaxed px-4">
                 El auténtico sabor de México. <br />
-                <span className="text-gray-400 text-lg">
+                <span className="text-gray-400 text-base md:text-lg">
                   Tradición y pasión en cada taco.
                 </span>
               </p>
 
-              <div className="flex flex-col md:flex-row items-center justify-center gap-6 text-sm md:text-base !text-white font-medium">
-                <div className="flex items-center gap-3 bg-white/5 backdrop-blur-md px-8 py-4 rounded-full border border-white/10 hover:bg-white/10 transition-colors shadow-lg">
+              <div className="flex flex-col md:flex-row items-center justify-center gap-6 text-sm md:text-base !text-white font-medium w-full">
+                <div className="flex items-center gap-3 bg-white/5 backdrop-blur-md px-6 py-4 rounded-full border border-white/10 hover:bg-white/10 transition-colors shadow-lg w-full md:w-auto justify-center">
                   <MapPin className="text-[#FCA311]" size={20} />
-                  <span className="!text-white">
+                  <span className="!text-white break-words">
                     5555 Taco Drive, Austin, TX
                   </span>
                 </div>
-                <div className="flex items-center gap-3 bg-white/5 backdrop-blur-md px-8 py-4 rounded-full border border-white/10 hover:bg-white/10 transition-colors shadow-lg">
+                <div className="flex items-center gap-3 bg-white/5 backdrop-blur-md px-6 py-4 rounded-full border border-white/10 hover:bg-white/10 transition-colors shadow-lg w-full md:w-auto justify-center">
                   <Clock className="text-[#FCA311]" size={20} />
                   <span className="!text-white">
                     Abierto Todos los Días: 8am - 10pm
@@ -156,50 +156,110 @@ export default function Home() {
           </motion.div>
         </section>
 
-        {/* Special of the Day Section */}
+        {/* Favorites Trilogy Section */}
         <section className="py-24 relative overflow-hidden">
           <div className="absolute inset-0 bg-[#FCA311]/5 -skew-y-3 transform origin-left scale-110 z-0"></div>
           <div className="max-w-7xl mx-auto px-4 relative z-10">
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              className="flex flex-col md:flex-row items-center gap-12"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-16"
             >
-              <div className="w-full md:w-1/2 relative rounded-2xl overflow-hidden shadow-2xl skew-x-0 md:-skew-x-2 border-4 border-[#FCA311]/20">
-                <Image
-                  src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=800&q=80"
-                  alt="Paquete Familiar"
-                  width={800}
-                  height={600}
-                  className="w-full h-auto object-cover transform md:skew-x-2 scale-105 hover:scale-110 transition-transform duration-700"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 md:skew-x-2 pointer-events-none">
-                  <span className="text-[#FCA311] font-bold text-lg tracking-wider">
-                    RECOMENDADO
-                  </span>
-                </div>
-              </div>
-              <div className="w-full md:w-1/2 space-y-6">
-                <h2 className="text-4xl md:text-5xl font-serif text-white font-bold mb-2">
-                  El Especial <span className="text-[#FCA311]">del Día</span>
-                </h2>
-                <div className="h-1 w-20 bg-[#E63946] mb-4"></div>
-                <h3 className="text-2xl text-white font-medium">
-                  Paquete Familiar Michoacano
-                </h3>
-                <p className="text-gray-300 text-lg leading-relaxed">
-                  Ven y disfruta de nuestro paquete estrella. 1kg de nuestras
-                  famosas carnitas, acompañadas de salsa verde y roja, tortillas
-                  recién hechas, limones, cilantro y cebolla. ¡Perfecto para
-                  compartir en familia!
-                </p>
-                <button className="bg-[#E63946] hover:bg-[#c92a37] text-white px-8 py-3 rounded-full font-bold tracking-wide transition-all shadow-lg hover:shadow-[#E63946]/50">
-                  Ordena Ahora
-                </button>
-              </div>
+              <h2 className="text-3xl md:text-5xl font-serif text-white mb-4">
+                Los Favoritos de la <span className="text-[#FCA311]">Casa</span>
+              </h2>
+              <div className="h-1 w-24 bg-[#E63946] mx-auto"></div>
+              <p className="mt-4 text-gray-400 text-lg">
+                Auténtico Sabor Michoacano
+              </p>
             </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {/* Card 1: Burrito */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 }}
+                className="group relative bg-zinc-900/50 rounded-3xl overflow-hidden border border-white/10 hover:border-[#FCA311] transition-colors duration-300"
+              >
+                <div className="h-64 overflow-hidden relative">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10 opacity-60" />
+                  <Image
+                    src="/images/burrito.png"
+                    alt="El Burrito Legendario"
+                    width={600}
+                    height={400}
+                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                  />
+                </div>
+                <div className="p-6 relative z-20">
+                  <h3 className="text-2xl font-serif text-white mb-2 group-hover:text-[#FCA311] transition-colors">
+                    El Burrito Legendario
+                  </h3>
+                  <p className="text-gray-400 font-light">
+                    Gigante, relleno de tu carne favorita y todos los poderes.
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Card 2: Torta */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                className="group relative bg-zinc-900/50 rounded-3xl overflow-hidden border border-white/10 hover:border-[#FCA311] transition-colors duration-300"
+              >
+                <div className="h-64 overflow-hidden relative">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10 opacity-60" />
+                  <Image
+                    src="/images/torta.png"
+                    alt="Torta Tradicional"
+                    width={600}
+                    height={400}
+                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                  />
+                </div>
+                <div className="p-6 relative z-20">
+                  <h3 className="text-2xl font-serif text-white mb-2 group-hover:text-[#FCA311] transition-colors">
+                    Torta Tradicional
+                  </h3>
+                  <p className="text-gray-400 font-light">
+                    El sabor clásico en pan fresco con carnitas o birria.
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Card 3: Quesabirria */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3 }}
+                className="group relative bg-zinc-900/50 rounded-3xl overflow-hidden border border-white/10 hover:border-[#FCA311] transition-colors duration-300"
+              >
+                <div className="h-64 overflow-hidden relative">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10 opacity-60" />
+                  <Image
+                    src="/images/quesabirria.jpg"
+                    alt="Quesabirria Viral"
+                    width={600}
+                    height={400}
+                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                  />
+                </div>
+                <div className="p-6 relative z-20">
+                  <h3 className="text-2xl font-serif text-white mb-2 group-hover:text-[#FCA311] transition-colors">
+                    Quesabirria Viral
+                  </h3>
+                  <p className="text-gray-400 font-light">
+                    Mucho queso, mucha carne y su consomé para chopear.
+                  </p>
+                </div>
+              </motion.div>
+            </div>
           </div>
         </section>
 

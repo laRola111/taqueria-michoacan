@@ -87,7 +87,7 @@ export default function MenuGrid() {
       </section>
 
       {/* VISUAL SECTION 1: Calidad Artesanal */}
-      <section className="relative w-full h-[60vh] md:h-[80vh] overflow-hidden my-16 group">
+      <section className="relative w-full h-64 md:h-[80vh] overflow-hidden my-16 group">
         <div className="absolute inset-0 bg-black/40 z-10" />
         <Image
           src={ASSETS.IMG_FINAL}
@@ -96,9 +96,11 @@ export default function MenuGrid() {
           className="object-cover group-hover:scale-105 transition-transform duration-1000"
         />
         <div className="absolute inset-0 z-20 flex items-center justify-center">
-          <h3 className="text-4xl md:text-7xl font-serif text-white text-center drop-shadow-xl px-4">
-            Calidad <br />
-            <span className="text-[#FCA311] italic">Artesanal</span>
+          <h3 className="text-3xl md:text-7xl font-serif text-white text-center drop-shadow-xl px-4">
+            Tortillas <br />
+            <span className="text-[#FCA311] italic text-2xl md:text-5xl border-b-2 border-[#FCA311] pb-2">
+              Hechas a mano al momento
+            </span>
           </h3>
         </div>
       </section>
@@ -117,7 +119,7 @@ export default function MenuGrid() {
       </section>
 
       {/* VISUAL SECTION 2: Nuestras Carnitas */}
-      <section className="relative w-full h-[60vh] md:h-[80vh] overflow-hidden my-16 group">
+      <section className="relative w-full h-64 md:h-[80vh] overflow-hidden my-16 group">
         <div className="absolute inset-0 bg-black/40 z-10" />
         <Image
           src={ASSETS.IMG_456}
@@ -126,9 +128,9 @@ export default function MenuGrid() {
           className="object-cover group-hover:scale-105 transition-transform duration-1000"
         />
         <div className="absolute inset-0 z-20 flex items-center justify-center">
-          <h3 className="text-4xl md:text-7xl font-serif text-white text-center drop-shadow-xl px-4">
-            Nuestras <br />
-            <span className="text-[#E63946] italic">Carnitas</span>
+          <h3 className="text-3xl md:text-7xl font-serif text-white text-center drop-shadow-xl px-4">
+            Nuestra <br />
+            <span className="text-[#E63946] italic">Especialidad</span>
           </h3>
         </div>
       </section>
@@ -147,7 +149,7 @@ export default function MenuGrid() {
       </section>
 
       {/* VISUAL SECTION 3: Complemento Perfecto */}
-      <section className="relative w-full h-[50vh] overflow-hidden mt-16 group">
+      <section className="relative w-full h-64 md:h-[80vh] overflow-hidden mt-16 group">
         <div className="absolute inset-0 bg-black/40 z-10" />
         <Image
           src={ASSETS.IMG_4A}
@@ -156,8 +158,8 @@ export default function MenuGrid() {
           className="object-cover group-hover:scale-105 transition-transform duration-1000"
         />
         <div className="absolute inset-0 z-20 flex items-center justify-center">
-          <h3 className="text-3xl md:text-5xl font-serif text-white text-center drop-shadow-xl px-4">
-            El Complemento <span className="text-[#FCA311]">Perfecto</span>
+          <h3 className="text-3xl md:text-6xl font-serif text-white text-center drop-shadow-xl px-4">
+            Frescura <span className="text-[#FCA311]">Garantizada</span>
           </h3>
         </div>
       </section>
@@ -167,25 +169,29 @@ export default function MenuGrid() {
 
 function MenuItem({ item, onAdd }: { item: any; onAdd: () => void }) {
   return (
-    <div className="group flex flex-col md:flex-row items-center justify-between border-b border-white/10 py-8 hover:bg-white/5 transition-colors px-4 md:px-8 rounded-xl">
-      <div className="text-center md:text-left mb-4 md:mb-0 max-w-xl">
+    <div className="group flex flex-col md:flex-row items-center justify-between border-b border-white/10 py-8 hover:bg-white/5 transition-colors px-4 md:px-8 rounded-xl gap-4 md:gap-0">
+      <div className="text-center md:text-left md:mb-0 max-w-xl w-full md:w-auto">
         <div className="flex items-center justify-center md:justify-start gap-4 mb-2">
-          <h4 className="text-2xl font-serif text-white">{item.title}</h4>
+          <h4 className="text-xl md:text-2xl font-serif text-white">
+            {item.title}
+          </h4>
           <div className="h-[1px] bg-white/20 flex-1 w-12 hidden md:block"></div>
         </div>
-        <p className="text-gray-400 font-light leading-relaxed">{item.desc}</p>
+        <p className="text-gray-400 font-light leading-relaxed text-sm md:text-base">
+          {item.desc}
+        </p>
       </div>
 
-      <div className="flex items-center gap-6">
+      <div className="flex items-center justify-between w-full md:w-auto md:justify-end gap-6">
         <span className="text-xl font-bold text-[#FCA311] tabular-nums">
           {item.displayPrice || `$${item.price.toFixed(2)}`}
         </span>
         <button
           onClick={onAdd}
-          className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-[#FCA311] hover:text-black transition-all active:scale-95"
+          className="w-12 h-12 md:w-10 md:h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-[#FCA311] hover:text-black transition-all active:scale-95 touch-manipulation"
           aria-label="Agregar al carrito"
         >
-          <Plus size={20} />
+          <Plus size={24} className="md:w-5 md:h-5" />
         </button>
       </div>
     </div>
