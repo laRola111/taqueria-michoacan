@@ -1,76 +1,193 @@
 "use client";
 
 import { motion } from "framer-motion";
-import MenuCard from "./MenuCard";
+import { ASSETS } from "../constants/assets";
+import { useCart } from "../context/CartContext";
+import { Plus } from "lucide-react";
+import Image from "next/image";
 
-// Using the same data structure as page.tsx but now isolated
+// Menu data with local assets and real prices
 const menuItems = [
   {
-    id: "cat_carnitas",
-    title: "Carnitas Michoacán",
-    desc: "Cocinadas lentamente en manteca de cerdo, crujientes por fuera y suaves por dentro.",
-    img: "https://images.unsplash.com/photo-1628154109720-6d45903c7343?q=80&w=800&auto=format&fit=crop",
-    price: 28.0, // Price added
+    category: "Favoritos",
+    items: [
+      {
+        id: "cat_platos",
+        title: "Platos",
+        desc: "Plato de Birria ($14.00) y Plato de Carnitas ($10.00). Incluyen arroz y frijoles.",
+        price: 10.0,
+        displayPrice: "$10.00 - $14.00",
+      },
+      {
+        id: "cat_tacos",
+        title: "Tacos",
+        desc: "Carnitas ($3.00), Birria ($3.00), Quesa Birria ($3.50), Quesadilla ($9.00).",
+        price: 3.0,
+        displayPrice: "$3.00 - $9.00",
+      },
+    ],
   },
   {
-    id: "cat_tacos",
-    title: "Tacos Tradicionales",
-    desc: "Tortillas de maíz recién hechas. Carne asada, pastor, o lengua.",
-    img: "https://images.unsplash.com/photo-1599974579688-8dbdd335c77f?q=80&w=800&auto=format&fit=crop",
-    price: 4.5, // Price added
+    category: "Tortas y Burritos",
+    items: [
+      {
+        id: "cat_tortas",
+        title: "Tortas",
+        desc: "Carnitas o Birria. Bolillo crujiente con tu carne favorita.",
+        price: 8.0,
+      },
+      {
+        id: "cat_burritos",
+        title: "Burritos",
+        desc: "Birria o Carnitas. Lechuga, tomate, queso, crema, aguacate, frijoles y arroz.",
+        price: 9.0,
+      },
+    ],
   },
   {
-    id: "cat_asada",
-    title: "Carne Asada",
-    desc: "Cortes selectos (Arrachera/Ribeye) asados al carbón de mezquite.",
-    img: "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800&auto=format&fit=crop",
-    price: 22.0, // Price added
+    category: "Para Compartir",
+    items: [
+      {
+        id: "cat_libra",
+        title: "Por Libra",
+        desc: "Carnitas ($12.00), Birria ($14.00). Para compartir en familia.",
+        price: 12.0,
+        displayPrice: "$12.00 / $14.00",
+      },
+    ],
   },
 ];
 
 export default function MenuGrid() {
-  return (
-    <section className="py-24 px-4 relative z-10 bg-[#050505]">
-      <div className="max-w-7xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          className="text-center mb-20"
-        >
-          <h2 className="text-4xl md:text-6xl font-serif text-white mb-6">
-            Menú <span className="text-[#E63946]">Destacado</span>
-          </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-            Selecciona tus favoritos y ordénalos por WhatsApp.
-          </p>
-        </motion.div>
+  const { addToCart } = useCart();
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-          {menuItems.map((item, index) => (
-            <motion.div
-              key={item.id}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{
-                delay: index * 0.2,
-                duration: 0.6,
-                ease: "easeOut",
-              }}
-              className="h-full"
-            >
-              <MenuCard
-                id={item.id}
-                title={item.title}
-                description={item.desc}
-                img={item.img}
-                price={item.price}
-              />
-            </motion.div>
-          ))}
-        </div>
+  return (
+    <div className="bg-[#050505] relative z-10 w-full">
+      {/* Introduction */}
+      <div className="py-20 text-center px-4">
+        <h2 className="text-4xl md:text-5xl font-serif text-white mb-6">
+          Menú <span className="text-[#E63946]">Oficial</span>
+        </h2>
+        <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+          Selecciona tus favoritos y ordénalos directamente por WhatsApp.
+        </p>
       </div>
-    </section>
+
+      {/* Block 1: Platos & Tacos */}
+      <section className="max-w-4xl mx-auto px-4 mb-20">
+        {menuItems[0].items.map((item) => (
+          <MenuItem
+            key={item.id}
+            item={item}
+            onAdd={() =>
+              addToCart({ id: item.id, title: item.title, price: item.price })
+            }
+          />
+        ))}
+      </section>
+
+      {/* VISUAL SECTION 1: Calidad Artesanal */}
+      <section className="relative w-full h-[60vh] md:h-[80vh] overflow-hidden my-16 group">
+        <div className="absolute inset-0 bg-black/40 z-10" />
+        <Image
+          src={ASSETS.IMG_FINAL}
+          alt="Tortillas hechas a mano"
+          fill
+          className="object-cover group-hover:scale-105 transition-transform duration-1000"
+        />
+        <div className="absolute inset-0 z-20 flex items-center justify-center">
+          <h3 className="text-4xl md:text-7xl font-serif text-white text-center drop-shadow-xl px-4">
+            Calidad <br />
+            <span className="text-[#FCA311] italic">Artesanal</span>
+          </h3>
+        </div>
+      </section>
+
+      {/* Block 2: Tortas & Burritos */}
+      <section className="max-w-4xl mx-auto px-4 mb-20">
+        {menuItems[1].items.map((item) => (
+          <MenuItem
+            key={item.id}
+            item={item}
+            onAdd={() =>
+              addToCart({ id: item.id, title: item.title, price: item.price })
+            }
+          />
+        ))}
+      </section>
+
+      {/* VISUAL SECTION 2: Nuestras Carnitas */}
+      <section className="relative w-full h-[60vh] md:h-[80vh] overflow-hidden my-16 group">
+        <div className="absolute inset-0 bg-black/40 z-10" />
+        <Image
+          src={ASSETS.IMG_456}
+          alt="Nuestras Carnitas"
+          fill
+          className="object-cover group-hover:scale-105 transition-transform duration-1000"
+        />
+        <div className="absolute inset-0 z-20 flex items-center justify-center">
+          <h3 className="text-4xl md:text-7xl font-serif text-white text-center drop-shadow-xl px-4">
+            Nuestras <br />
+            <span className="text-[#E63946] italic">Carnitas</span>
+          </h3>
+        </div>
+      </section>
+
+      {/* Block 3: Por Libra */}
+      <section className="max-w-4xl mx-auto px-4 mb-20">
+        {menuItems[2].items.map((item) => (
+          <MenuItem
+            key={item.id}
+            item={item}
+            onAdd={() =>
+              addToCart({ id: item.id, title: item.title, price: item.price })
+            }
+          />
+        ))}
+      </section>
+
+      {/* VISUAL SECTION 3: Complemento Perfecto */}
+      <section className="relative w-full h-[50vh] overflow-hidden mt-16 group">
+        <div className="absolute inset-0 bg-black/40 z-10" />
+        <Image
+          src={ASSETS.IMG_4A}
+          alt="Complementos Frescos"
+          fill
+          className="object-cover group-hover:scale-105 transition-transform duration-1000"
+        />
+        <div className="absolute inset-0 z-20 flex items-center justify-center">
+          <h3 className="text-3xl md:text-5xl font-serif text-white text-center drop-shadow-xl px-4">
+            El Complemento <span className="text-[#FCA311]">Perfecto</span>
+          </h3>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function MenuItem({ item, onAdd }: { item: any; onAdd: () => void }) {
+  return (
+    <div className="group flex flex-col md:flex-row items-center justify-between border-b border-white/10 py-8 hover:bg-white/5 transition-colors px-4 md:px-8 rounded-xl">
+      <div className="text-center md:text-left mb-4 md:mb-0 max-w-xl">
+        <div className="flex items-center justify-center md:justify-start gap-4 mb-2">
+          <h4 className="text-2xl font-serif text-white">{item.title}</h4>
+          <div className="h-[1px] bg-white/20 flex-1 w-12 hidden md:block"></div>
+        </div>
+        <p className="text-gray-400 font-light leading-relaxed">{item.desc}</p>
+      </div>
+
+      <div className="flex items-center gap-6">
+        <span className="text-xl font-bold text-[#FCA311] tabular-nums">
+          {item.displayPrice || `$${item.price.toFixed(2)}`}
+        </span>
+        <button
+          onClick={onAdd}
+          className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-[#FCA311] hover:text-black transition-all active:scale-95"
+          aria-label="Agregar al carrito"
+        >
+          <Plus size={20} />
+        </button>
+      </div>
+    </div>
   );
 }

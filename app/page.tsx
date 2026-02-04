@@ -81,15 +81,62 @@ export default function Home() {
                 </span>
               </p>
 
-              <div className="flex flex-col md:flex-row items-center justify-center gap-6 text-sm md:text-base text-gray-200 font-medium">
+              <div className="flex flex-col md:flex-row items-center justify-center gap-6 text-sm md:text-base !text-white font-medium">
                 <div className="flex items-center gap-3 bg-white/5 backdrop-blur-md px-8 py-4 rounded-full border border-white/10 hover:bg-white/10 transition-colors shadow-lg">
                   <MapPin className="text-[#FCA311]" size={20} />
-                  <span>5555 Taco Drive, Austin, TX</span>
+                  <span className="!text-white">
+                    5555 Taco Drive, Austin, TX
+                  </span>
                 </div>
                 <div className="flex items-center gap-3 bg-white/5 backdrop-blur-md px-8 py-4 rounded-full border border-white/10 hover:bg-white/10 transition-colors shadow-lg">
                   <Clock className="text-[#FCA311]" size={20} />
-                  <span>Abierto Todos los Días: 8am - 10pm</span>
+                  <span className="!text-white">
+                    Abierto Todos los Días: 8am - 10pm
+                  </span>
                 </div>
+              </div>
+
+              {/* Social Media Links in Hero */}
+              <div className="flex items-center justify-center gap-6 mt-8">
+                <a
+                  href="https://www.tiktok.com/@taqueqceseh"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 bg-white/10 rounded-full hover:bg-[#FFB703] hover:text-black text-white transition-all duration-300 hover:scale-110"
+                  aria-label="TikTok"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+                  </svg>
+                </a>
+                <a
+                  href="https://www.instagram.com/taqueriaycarnitas"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 bg-white/10 rounded-full hover:bg-[#FFB703] hover:text-black text-white transition-all duration-300 hover:scale-110"
+                  aria-label="Instagram"
+                >
+                  <Instagram size={20} />
+                </a>
+                <a
+                  href="https://www.facebook.com/share/1D1hUznm52/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 bg-white/10 rounded-full hover:bg-[#FFB703] hover:text-black text-white transition-all duration-300 hover:scale-110"
+                  aria-label="Facebook"
+                >
+                  <Facebook size={20} />
+                </a>
               </div>
             </motion.div>
           </div>
@@ -213,19 +260,21 @@ export default function Home() {
             <h3 className="text-2xl font-serif text-white mb-6 tracking-widest uppercase">
               Taquería y Carnitas Michoacán
             </h3>
-            <div className="flex flex-col md:flex-row justify-center gap-8 mb-8 text-neutral-500">
+            <div className="flex flex-col md:flex-row justify-center gap-8 mb-8 text-white/90 font-medium">
               <span className="flex items-center justify-center gap-2 hover:text-[#FCA311] transition-colors">
-                <MapPin size={16} /> 5555 Taco Drive, Austin, TX
+                <MapPin size={16} className="text-[#FCA311]" /> 5555 Taco Drive,
+                Austin, TX
               </span>
               <span className="flex items-center justify-center gap-2 hover:text-[#FCA311] transition-colors">
-                <Clock size={16} /> Lun - Dom: 8am - 10pm
+                <Clock size={16} className="text-[#FCA311]" /> Abierto Todos los
+                Días: 8am - 10pm
               </span>
             </div>
 
             {/* Social Media Links */}
             <div className="flex justify-center gap-6 mb-8">
               <a
-                href="https://www.tiktok.com/"
+                href="https://www.tiktok.com/@taqueqceseh"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 bg-white/5 rounded-full hover:text-[#FFB703] hover:bg-white/10 transition-all duration-300 group"
@@ -248,7 +297,9 @@ export default function Home() {
                 </svg>
               </a>
               <a
-                href="#"
+                href="https://www.instagram.com/taqueriaycarnitas"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="p-3 bg-white/5 rounded-full hover:text-[#FFB703] hover:bg-white/10 transition-all duration-300 group"
                 aria-label="Instagram"
               >
@@ -258,7 +309,9 @@ export default function Home() {
                 />
               </a>
               <a
-                href="#"
+                href="https://www.facebook.com/share/1D1hUznm52/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="p-3 bg-white/5 rounded-full hover:text-[#FFB703] hover:bg-white/10 transition-all duration-300 group"
                 aria-label="Facebook"
               >

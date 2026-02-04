@@ -11,6 +11,7 @@ interface MenuCardProps {
   description: string;
   img: string;
   price: number;
+  displayPrice?: string;
 }
 
 export default function MenuCard({
@@ -19,6 +20,7 @@ export default function MenuCard({
   description,
   img,
   price,
+  displayPrice,
 }: MenuCardProps) {
   const { cart, addToCart, removeFromCart } = useCart();
   const cartItem = cart.find((item) => item.id === id);
@@ -50,7 +52,7 @@ export default function MenuCard({
             {title}
           </h3>
           <span className="text-[#FFB703] font-bold text-xl tabular-nums text-right">
-            ${price.toFixed(2)}
+            {displayPrice || `$${price.toFixed(2)}`}
           </span>
         </div>
 
@@ -63,7 +65,7 @@ export default function MenuCard({
           {quantity === 0 ? (
             <button
               onClick={() => addToCart({ id, title, price })}
-              className="w-full py-3 bg-white/10 hover:bg-[#FFB703] hover:text-black rounded-xl font-bold transition-all duration-300 active:scale-96 flex items-center justify-center gap-2"
+              className="w-full py-3 bg-white/10 text-white hover:bg-[#FFB703] hover:text-black rounded-xl font-bold transition-all duration-300 active:scale-95 flex items-center justify-center gap-2"
             >
               <Plus size={18} /> Agregar
             </button>
@@ -71,7 +73,7 @@ export default function MenuCard({
             <div className="flex items-center justify-between w-full bg-white/10 rounded-xl p-1">
               <button
                 onClick={() => removeFromCart(id)}
-                className="w-10 h-10 flex items-center justify-center bg-transparent hover:bg-white/10 rounded-lg text-white transition-colors active:scale-90"
+                className="w-10 h-10 flex items-center justify-center bg-transparent hover:bg-white/10 rounded-lg text-white transition-colors active:scale-95"
               >
                 <Minus size={18} />
               </button>
@@ -80,7 +82,7 @@ export default function MenuCard({
               </span>
               <button
                 onClick={() => addToCart({ id, title, price })}
-                className="w-10 h-10 flex items-center justify-center bg-[#FFB703] text-black rounded-lg hover:brightness-110 transition-all active:scale-90"
+                className="w-10 h-10 flex items-center justify-center bg-[#FFB703] text-black rounded-lg hover:brightness-110 transition-all active:scale-95"
               >
                 <Plus size={18} />
               </button>
