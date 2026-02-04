@@ -5,7 +5,7 @@
 export const dynamic = "force-static";
 
 import { motion } from "framer-motion";
-import { MapPin, Clock, Star, Instagram, Facebook } from "lucide-react";
+import { MapPin, Clock, Star, Instagram, Facebook, Phone } from "lucide-react";
 import Image from "next/image";
 import { CartProvider } from "./context/CartContext";
 import MenuGrid from "./components/MenuGrid";
@@ -57,18 +57,17 @@ export default function Home() {
               transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
               className="flex flex-col items-center"
             >
-              <h2 className="text-[#FCA311] font-serif text-base md:text-2xl tracking-[0.3em] mb-8 uppercase font-bold drop-shadow-sm">
-                Austin, Texas
-              </h2>
+              
+             
 
-              <div className="relative w-full max-w-[400px] md:max-w-[600px] aspect-[3/1] mb-6">
+              <div className="relative w-full max-w-[500px] md:max-w-[600px] aspect-[3/1] mb-6">
                 <Image
                   src={ASSETS.LOGO}
                   alt="Taquería y Carnitas Michoacán"
                   fill
                   priority={true}
                   className="object-contain drop-shadow-2xl"
-                  sizes="(max-width: 768px) 90vw, 600px"
+                  sizes="(max-width: 868px) 10vw, 700px"
                 />
               </div>
 
@@ -81,18 +80,47 @@ export default function Home() {
                 </span>
               </p>
 
-              <div className="flex flex-col md:flex-row items-center justify-center gap-6 text-sm md:text-base !text-white font-medium w-full">
+              <div className="flex flex-col items-center justify-center gap-6 text-sm md:text-base !text-white font-medium w-full">
+                {/* Address */}
                 <div className="flex items-center gap-3 bg-white/5 backdrop-blur-md px-6 py-4 rounded-full border border-white/10 hover:bg-white/10 transition-colors shadow-lg w-full md:w-auto justify-center">
                   <MapPin className="text-[#FCA311]" size={20} />
-                  <span className="!text-white break-words">
-                    5555 Taco Drive, Austin, TX
+                  <span className="!text-white break-words text-center">
+                    6520 FM-969 AUSTIN TX 78724
                   </span>
                 </div>
-                <div className="flex items-center gap-3 bg-white/5 backdrop-blur-md px-6 py-4 rounded-full border border-white/10 hover:bg-white/10 transition-colors shadow-lg w-full md:w-auto justify-center">
-                  <Clock className="text-[#FCA311]" size={20} />
-                  <span className="!text-white">
-                    Abierto Todos los Días: 8am - 10pm
-                  </span>
+
+                {/* Phones */}
+                <div className="flex flex-col md:flex-row gap-4">
+                  <a
+                    href="tel:+17373985171"
+                    className="flex items-center gap-2 bg-white/5 backdrop-blur-md px-6 py-3 rounded-full border border-white/10 hover:bg-[#FCA311]/20 transition-colors shadow-lg !text-white hover:text-[#FCA311]"
+                  >
+                    <Phone size={18} className="text-[#FCA311]" />
+                    <span>(737) 398-5171</span>
+                  </a>
+                  <a
+                    href="tel:+15129021367"
+                    className="flex items-center gap-2 bg-white/5 backdrop-blur-md px-6 py-3 rounded-full border border-white/10 hover:bg-[#FCA311]/20 transition-colors shadow-lg !text-white hover:text-[#FCA311]"
+                  >
+                    <Phone size={18} className="text-[#FCA311]" />
+                    <span>(512) 902-1367</span>
+                  </a>
+                </div>
+
+                {/* Hours */}
+                <div className="flex flex-col items-center gap-2 bg-white/5 backdrop-blur-md px-8 py-4 rounded-3xl border border-white/10 hover:bg-white/10 transition-colors shadow-lg text-center mt-2">
+                  <div className="flex items-center gap-2 text-[#FCA311] mb-1">
+                    <Clock size={20} />
+                    <span className="font-bold tracking-wider">HORARIOS</span>
+                  </div>
+                  <div className="flex flex-col gap-1 text-sm md:text-base">
+                    <span className="!text-white">
+                      🕒 LUNES - JUEVES: 6AM - 10PM
+                    </span>
+                    <span className="!text-white">
+                      🕒 VIERNES - DOMINGO: 6AM - 12PM
+                    </span>
+                  </div>
                 </div>
               </div>
 
@@ -243,8 +271,8 @@ export default function Home() {
                 <div className="h-64 overflow-hidden relative">
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10 opacity-60" />
                   <Image
-                    src="/images/quesabirria.jpg"
-                    alt="Quesabirria Viral"
+                    src="/images/quesabirria.png"
+                    alt="Quesabirria"
                     width={600}
                     height={400}
                     className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
@@ -252,7 +280,7 @@ export default function Home() {
                 </div>
                 <div className="p-6 relative z-20">
                   <h3 className="text-2xl font-serif text-white mb-2 group-hover:text-[#FCA311] transition-colors">
-                    Quesabirria Viral
+                    Quesabirria
                   </h3>
                   <p className="text-gray-400 font-light">
                     Mucho queso, mucha carne y su consomé para chopear.
@@ -320,15 +348,35 @@ export default function Home() {
             <h3 className="text-2xl font-serif text-white mb-6 tracking-widest uppercase">
               Taquería y Carnitas Michoacán
             </h3>
-            <div className="flex flex-col md:flex-row justify-center gap-8 mb-8 text-white/90 font-medium">
+            <div className="flex flex-col md:flex-row justify-center gap-8 mb-8 text-white/90 font-medium flex-wrap">
               <span className="flex items-center justify-center gap-2 hover:text-[#FCA311] transition-colors">
-                <MapPin size={16} className="text-[#FCA311]" /> 5555 Taco Drive,
-                Austin, TX
+                <MapPin size={16} className="text-[#FCA311]" /> 6520 FM-969
+                AUSTIN TX 78724
               </span>
-              <span className="flex items-center justify-center gap-2 hover:text-[#FCA311] transition-colors">
-                <Clock size={16} className="text-[#FCA311]" /> Abierto Todos los
-                Días: 8am - 10pm
-              </span>
+              <div className="flex gap-4">
+                <a
+                  href="tel:+17373985171"
+                  className="flex items-center justify-center gap-2 hover:text-[#FCA311] transition-colors"
+                >
+                  <Phone size={16} className="text-[#FCA311]" /> (737) 398-5171
+                </a>
+                <a
+                  href="tel:+15129021367"
+                  className="flex items-center justify-center gap-2 hover:text-[#FCA311] transition-colors"
+                >
+                  <Phone size={16} className="text-[#FCA311]" /> (512) 902-1367
+                </a>
+              </div>
+            </div>
+            <div className="flex flex-col items-center gap-1 mb-8 text-white/80 text-xs md:text-sm">
+              <div className="flex items-center gap-2">
+                <Clock size={14} className="text-[#FCA311]" />
+                <span>LUNES - JUEVES: 6AM - 10PM</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Clock size={14} className="text-[#FCA311]" />
+                <span>VIERNES - DOMINGO: 6AM - 12PM</span>
+              </div>
             </div>
 
             {/* Social Media Links */}

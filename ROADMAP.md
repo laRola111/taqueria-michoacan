@@ -19,6 +19,7 @@
   - [x] **List Layout Implementation** (Text-based menu)
   - [x] **Favorites Section (Trilogy)** (Burrito, Torta, Quesabirria featured)
   - [x] **Mobile Experience Optimization** (Responsive Polish & Touch Targets)
+  - [x] **Master Data Injection** (Address, Phone, Hours, Slogan)
 
 ## Phase 2: Interactivity & Logic
 
